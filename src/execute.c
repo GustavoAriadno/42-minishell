@@ -6,7 +6,7 @@
 /*   By: gariadno <gariadno@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 23:03:34 by aroque            #+#    #+#             */
-/*   Updated: 2021/03/17 10:39:31 by aroque           ###   ########.fr       */
+/*   Updated: 2021/03/17 22:33:22 by gariadno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,10 @@ int		execute_builtin(t_process *p, t_shell *shell, bool *exec, int out)
 		return (status);
 	if (ft_streq(p->command, "echo"))
 		status = ft_echo(p->argv, out);
+	else if (ft_streq(p->command, "pwd"))
+		status = ft_pwd(p->argv, out);
+	else if (ft_streq(p->command, "cd"))
+		status = ft_cd(p->argv, shell->env);
 	else if (ft_streq(p->command, "exit"))
 		status = ft_exit(shell);
 	else if (ft_streq(p->command, "env"))
